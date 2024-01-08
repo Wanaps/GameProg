@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
 
 
         //movement event
-        transform.Translate(Vector3.right * verticalInput * Time.deltaTime * speed);
-        transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+        transform.Translate(Vector3.up * verticalInput * Time.deltaTime * speed);
     }
 }
