@@ -49,6 +49,25 @@ public class AsteroidMovement : MonoBehaviour
             transform.position = new Vector3(UnityEngine.Random.Range(-11.5f, 11.5f), 5.0f, 0.0f);
             transform.rotation = Quaternion.identity;
         }
+    }
 
+    public void stop()
+    {
+        if (gameObject.name.Contains("Huge"))
+        {
+            speed = 0.0f;
+        }
+        else if (gameObject.name.Contains("Big"))
+        {
+            speed = 0.0f;
+        }
+        else if (gameObject.name.Contains("Med"))
+        {
+            speed = 0.0f;
+        }
+        else if (gameObject.name.Contains("Small"))
+        {
+            speed = 0.0f;
+        }
     }
 }
