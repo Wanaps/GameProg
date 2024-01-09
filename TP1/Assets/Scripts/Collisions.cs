@@ -14,8 +14,6 @@ public class Collisions : MonoBehaviour
     {
         Debug.Log("Collided.");
         Destroy(gameObject);
-        lostText = GameObject.Find("LostText").GetComponent<Text>();
-        lostText.text = "You Lost!";
     }
 
     void Start()
