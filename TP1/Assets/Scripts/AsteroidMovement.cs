@@ -9,8 +9,10 @@ public class AsteroidMovement : MonoBehaviour
 {
 
     public float speed = 1.0f;
+    private Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         if (gameObject.name.Contains("Huge"))
         {
             speed = 2.0f;
@@ -32,9 +34,8 @@ public class AsteroidMovement : MonoBehaviour
 
     void Update()
     {
-        //movement event, force the rotation to be 0
-        transform.Translate(Vector3.down * Time.deltaTime * speed);
-        transform.rotation = Quaternion.identity;
+        rb.velocity = -transform.up * speed;
+        
         if (gameObject == null)
         {
             Debug.Log("Asteroid Destroyed.");
@@ -42,32 +43,14 @@ public class AsteroidMovement : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.gameObject.name.Contains("FenceKiller")){
+        if (other.gameObject.name.Contains("FenceKiller")){
             // teleport to top and random x and reset orientation
-            transform.position = new Vector3(UnityEngine.Random.Range(-11.5f, 11.5f), 5.0f, 0.0f);
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0.0f;
+            transform.position = new Vector3(UnityEngine.Random.Range(-8.0f, 8.0f), 8.0f, 0.0f);
             transform.rotation = Quaternion.identity;
-        }
-    }
-
-    public void stop()
-    {
-        if (gameObject.name.Contains("Huge"))
-        {
-            speed = 0.0f;
-        }
-        else if (gameObject.name.Contains("Big"))
-        {
-            speed = 0.0f;
-        }
-        else if (gameObject.name.Contains("Med"))
-        {
-            speed = 0.0f;
-        }
-        else if (gameObject.name.Contains("Small"))
-        {
-            speed = 0.0f;
         }
     }
 }
