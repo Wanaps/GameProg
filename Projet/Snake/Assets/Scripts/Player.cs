@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        SceneManager.LoadScene("Lose");
         Destroy(this);
+        // SceneManager.LoadScene("Lose");
     }
 }
