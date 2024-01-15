@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private string _dir = "down";
     public float speed = 10.0f;
     public GameObject corps;
-    List<GameObject> all_corps = new List<GameObject>();
+    List<corps> all_corps = new List<corps>();
     Queue<Vector2> positions = new Queue<Vector2>();
     void Start()
     {
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
             positions.Dequeue();
         }
         for (int i = 0; i < ((ICollection)all_corps).Count; i++) {
-            GetComponent(all_corps[i].GetType()).Move(positions.ElementAt(all_corps.Count - i - 1));
+            all_corps[i].Move(positions.ElementAt(all_corps.Count - i - 1));
         }
     }
 
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     public void Eat()
     {
         speed += 0.5f;
-        all_corps.Add(Instantiate(corps, transform.position, Quaternion.identity));
+        all_corps.Add(Instantiate(corps, transform.position, Quaternion.identity).transform.GetComponent<corps>());
         score++;
     }
 
