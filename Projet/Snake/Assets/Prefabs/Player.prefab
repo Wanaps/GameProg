@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e31c82a0518374fb3ef30959748f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 36
-  fps: 10000
+  score: 41
+  fps: 5
   corps: {fileID: 4121128558986178447, guid: 3203453bc2134584fb822069d557b9dc, type: 3}

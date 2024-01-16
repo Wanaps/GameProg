@@ -47,6 +47,10 @@ namespace Serpent
                 Application.targetFrameRate = fps;
             checkPressed();
             move_corps();
+            if (AutoCollision())
+            {
+                Die();
+            }
         }
 
         private void move_corps()
@@ -86,16 +90,32 @@ namespace Serpent
             score++;
         }
         
-        
         public void Add_corps()
         {
-            Vector3 pos = all_corps[all_corps.Count - 1].transform.position + direction;
+            Vector3 pos = all_corps[all_corps.Count - 1].transform.position - direction;
             all_corps.Add(Instantiate(corps, pos, Quaternion.identity).transform.GetComponent<Corps>());
+        }
+        
+        public bool AutoCollision()
+        {
+            Vector3 tete = all_corps[all_corps.Count - 1].transform.position;
+            for (int i = 0; i < all_corps.Count() - 1; i++)
+            {
+                if (Math.Abs(all_corps[i].transform.position.x - tete.x) < 0.005f && Math.Abs(all_corps[i].transform.position.y - tete.y) < 0.005f)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         
         public void Die()
         {
-            Destroy(this);
+            for (int i = 0; i < all_corps.Count; i++)
+            {
+                Destroy(all_corps[0].gameObject);
+                all_corps.RemoveAt(0);
+            }
             // SceneManager.LoadScene("Lose");
         }
     }
