@@ -4,9 +4,14 @@ using UnityEngine;
 
 namespace Serpent
 {
-    public class corps : MonoBehaviour
+    public class Corps : MonoBehaviour
     {
         private Rigidbody2D _rb;
+        
+        public Corps(float x, float y)
+        {
+            transform.position = new Vector3(x, y, 0);
+        }
 
         void Start()
         {
@@ -17,24 +22,8 @@ namespace Serpent
             _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
-        public void Move(Vector3 pos, Player.Direction direction)
+        public void Move(Vector3 pos)
         {
-            switch (direction)
-            {
-                case Player.Direction.Up:
-                    pos.y += Player.speed;
-                    break;
-                case Player.Direction.Down:
-                    pos.y -= Player.speed;
-                    break;
-                case Player.Direction.Right:
-                    pos.x += Player.speed;
-                    break;
-                case Player.Direction.Left:
-                    pos.x -= Player.speed;
-                    break;
-            }
-
             transform.position = pos;
         }
     }

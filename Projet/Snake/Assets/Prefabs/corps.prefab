@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2116403640066637769}
   - component: {fileID: 300741791169665202}
   - component: {fileID: 2680487848287592359}
-  - component: {fileID: 7078982388532728260}
+  - component: {fileID: 476022000199945332}
   m_Layer: 0
   m_Name: corps
-  m_TagString: Undefined
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +158,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7078982388532728260
+--- !u!114 &476022000199945332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
