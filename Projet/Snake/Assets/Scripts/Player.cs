@@ -14,7 +14,8 @@ namespace Serpent
         public int score = 0;
 
         public static float speed = 0.005f;
-        public int fps = 60;
+        public static int fps = 5;
+        private readonly object corpsLock = new object();
 
         internal Dictionary<string, Vector3> directions = new Dictionary<string, Vector3>
         {
@@ -27,10 +28,10 @@ namespace Serpent
         internal Vector3 direction;
         public GameObject corps;
         public static List<Corps> all_corps = new List<Corps>();
-        Queue<Vector2> positions = new Queue<Vector2>();
 
         void Start()
         {
+            StartCoroutine(AutoCollision());
             direction = directions["haut"];
             all_corps.Add(Instantiate(corps, new Vector3(0, 0, 0), Quaternion.identity).transform.GetComponent<Corps>());
         }
@@ -47,10 +48,6 @@ namespace Serpent
                 Application.targetFrameRate = fps;
             checkPressed();
             move_corps();
-            if (AutoCollision())
-            {
-                Die();
-            }
         }
 
         private void move_corps()
@@ -96,25 +93,32 @@ namespace Serpent
             all_corps.Add(Instantiate(corps, pos, Quaternion.identity).transform.GetComponent<Corps>());
         }
         
-        public bool AutoCollision()
+        public IEnumerator AutoCollision()
         {
-            Vector3 tete = all_corps[all_corps.Count - 1].transform.position;
-            for (int i = 0; i < all_corps.Count() - 1; i++)
+            while (true)
             {
-                if (Math.Abs(all_corps[i].transform.position.x - tete.x) < 0.005f && Math.Abs(all_corps[i].transform.position.y - tete.y) < 0.005f)
+                yield return new WaitForSeconds(.1f);
+                Vector3 tete = all_corps[all_corps.Count - 1].transform.position;
+                for (int i = 0; i < all_corps.Count() - 1; i++)
                 {
-                    return true;
+                    if (Math.Abs(all_corps[i].transform.position.x - tete.x) < 0.003f &&
+                        Math.Abs(all_corps[i].transform.position.y - tete.y) < 0.003f)
+                    {
+                        Die();
+                    }
                 }
             }
-            return false;
         }
         
         public void Die()
         {
-            for (int i = 0; i < all_corps.Count; i++)
+            lock (corpsLock)
             {
-                Destroy(all_corps[0].gameObject);
-                all_corps.RemoveAt(0);
+                foreach (var co in all_corps)
+                {
+                    Destroy(co.gameObject);
+                    all_corps.Remove(co);
+                }
             }
             // SceneManager.LoadScene("Lose");
         }
