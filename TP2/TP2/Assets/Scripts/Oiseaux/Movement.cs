@@ -1,10 +1,11 @@
+﻿using System;
 using UnityEngine;
 
-namespace Cactus
+namespace Oiseaux
 {
-    public class Movement : Cactus
+    public class Movement : Oiseau
     {
-        void Update()
+        private void Update()
         {
             Move();
         }

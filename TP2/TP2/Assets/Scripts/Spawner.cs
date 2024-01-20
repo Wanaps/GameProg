@@ -7,8 +7,10 @@ public class Spawner : MonoBehaviour
     private List<GameObject> _obstacles;
     public GameObject cactus;
     public GameObject dino;
+    public GameObject oiseau;
     private float _timer = 0f;
     private float _spawnTime = 1f;
+    private int score;
     
     void Start()
     {
@@ -21,12 +23,25 @@ public class Spawner : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer > _spawnTime)
         {
-            Spawn();
+            SpawnCactus();
+            if (score > 10)
+            {
+                SpawnOiseau();
+            }
             _timer = 0f;
         }
     }
-    
-    private void Spawn()
+
+    private void SpawnOiseau()
+    {
+        var random = Random.Range(0, 6);
+        if (random == 0)
+        {
+            _obstacles.Add(Instantiate(oiseau, new Vector3(10, Random.Range(0, 2), 0), Quaternion.identity));
+        }
+    }
+
+    private void SpawnCactus()
     {
         var random = Random.Range(0, 2);
         if (random == 0)

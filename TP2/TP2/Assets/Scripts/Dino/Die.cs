@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Dino
 {
-    public class Die : MonoBehaviour
+    public class Die : Dino
     {
         void OnCollisionEnter2D(Collision2D other)
         {

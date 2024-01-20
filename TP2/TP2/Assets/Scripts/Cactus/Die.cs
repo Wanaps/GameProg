@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Cactus
 {
-    public class Die : MonoBehaviour
+    public class Die : Cactus
     {
         private void Update()
         {
