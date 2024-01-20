@@ -1,3 +1,4 @@
+using Coin;
 using UnityEngine;
 
 namespace Dino
@@ -12,6 +13,7 @@ namespace Dino
             {
                 Jump();
             }
+            
         }
 
         private void Jump()

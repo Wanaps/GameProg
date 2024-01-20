@@ -8,6 +8,7 @@ TagManager:
   - Cactus
   - Oiseau
   - Coin
+  - Score
   layers:
   - Default
   - TransparentFX

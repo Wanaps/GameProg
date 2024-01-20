@@ -11,16 +11,18 @@ public class Spawner : MonoBehaviour
     public GameObject coin;
     private float _timer = 0f;
     private float _spawnTime = 1f;
-    internal static int Score;
+    internal static int Score = 0;
     
     void Start()
     {
         _obstacles = new List<GameObject>();
         Instantiate(dino, new Vector3(-5, 1, 0), Quaternion.identity);
+        Score = 0;
     }
 
     void Update()
     {
+
         _timer += Time.deltaTime;
         if (_timer > _spawnTime)
         {
@@ -31,6 +33,10 @@ public class Spawner : MonoBehaviour
                 SpawnOiseau();
             }
             _timer = 0f;
+        }
+        if (_timer % 2 == 0)
+        {
+            Score++;
         }
     }
 
