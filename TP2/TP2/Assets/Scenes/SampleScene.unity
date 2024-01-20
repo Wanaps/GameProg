@@ -247,7 +247,7 @@ MonoBehaviour:
   cactus: {fileID: 3101812947695404064, guid: 12065a9f4a7238f428a5f8f4688357e3, type: 3}
   dino: {fileID: 1832443303698691986, guid: 6e6d06020394c0048b56653258be6882, type: 3}
   oiseau: {fileID: 2206186139017624465, guid: b5e0c26857b3182439bead276acfe3ba, type: 3}
-  coin: {fileID: 0}
+  coin: {fileID: 2496520510214855456, guid: 46ae027b7eccac94a85019e1754cf144, type: 3}
 --- !u!4 &1427828424
 Transform:
   m_ObjectHideFlags: 0
