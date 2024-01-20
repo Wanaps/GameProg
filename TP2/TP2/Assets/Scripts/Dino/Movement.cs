@@ -16,6 +16,7 @@ namespace Dino
             _pc = GetComponent<PolygonCollider2D>();
             _rb.constraints = RigidbodyConstraints2D.FreezePositionX;
             _rb.freezeRotation = true;
+            _rb.gravityScale = 5;
         }
 
         // Update is called once per frame
@@ -29,19 +30,7 @@ namespace Dino
 
         private void Jump()
         {
-            _rb.AddForce(new Vector2(0, 7), ForceMode2D.Impulse);
-        }
-        
-        
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == "Obstacle")
-            {
-                Debug.Log("Game Over");
-            } else if (collision.gameObject.tag == "Floor")
-            {
-                Debug.Log("Floor");
-            }
+            _rb.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
         }
     }
 }

@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         _obstacles = new List<GameObject>();
-        Instantiate(dino, new Vector3(-5, 0, 0), Quaternion.identity);
+        Instantiate(dino, new Vector3(-5, 1, 0), Quaternion.identity);
     }
 
     void Update()
