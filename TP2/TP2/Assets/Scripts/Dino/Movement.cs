@@ -15,13 +15,13 @@ namespace Dino
             _rb = GetComponent<Rigidbody2D>();
             _pc = GetComponent<PolygonCollider2D>();
             _rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-            _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            _rb.freezeRotation = true;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && _pc.IsTouchingLayers(LayerMask.GetMask("Floor")))
+            if (Input.GetKeyDown(KeyCode.Space) && _rb.velocity.y == 0)
             {
                 Jump();
             }
@@ -29,7 +29,7 @@ namespace Dino
 
         private void Jump()
         {
-            _rb.AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+            _rb.AddForce(new Vector2(0, 7), ForceMode2D.Impulse);
         }
         
         
