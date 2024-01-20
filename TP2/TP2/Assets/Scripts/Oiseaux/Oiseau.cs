@@ -7,11 +7,13 @@ namespace Oiseaux
     {
         internal Rigidbody2D Rb;
         internal float Speed;
-        private void Start()
+        private void Awake()
         {
-            gameObject.AddComponent<Rigidbody2D>();
-            gameObject.AddComponent<PolygonCollider2D>();
-            Rb = GetComponent<Rigidbody2D>();
+            Rb = GetComponent<Rigidbody2D>() == null ? gameObject.AddComponent<Rigidbody2D>() : GetComponent<Rigidbody2D>();
+            if (GetComponent<PolygonCollider2D>() == null)
+            {
+                gameObject.AddComponent<PolygonCollider2D>();
+            }
             Rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             Rb.freezeRotation = true;
         }

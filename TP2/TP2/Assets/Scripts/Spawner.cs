@@ -8,9 +8,10 @@ public class Spawner : MonoBehaviour
     public GameObject cactus;
     public GameObject dino;
     public GameObject oiseau;
+    public GameObject coin;
     private float _timer = 0f;
     private float _spawnTime = 1f;
-    private int score;
+    internal static int Score;
     
     void Start()
     {
@@ -23,8 +24,9 @@ public class Spawner : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer > _spawnTime)
         {
+            SpawnCoin();
             SpawnCactus();
-            if (score > 10)
+            if (Score > 10)
             {
                 SpawnOiseau();
             }
@@ -32,9 +34,18 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    private void SpawnCoin()
+    {
+        var random = Random.Range(0, 4);
+        if (random == 0)
+        {
+            _obstacles.Add(Instantiate(coin, new Vector3(10, Random.Range(0, 2), 0), Quaternion.identity));
+        }
+    }
+
     private void SpawnOiseau()
     {
-        var random = Random.Range(0, 6);
+        var random = Random.Range(0, 4);
         if (random == 0)
         {
             _obstacles.Add(Instantiate(oiseau, new Vector3(10, Random.Range(0, 2), 0), Quaternion.identity));

@@ -7,7 +7,7 @@ namespace Dino
     {
         void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Cactus"))
+            if (other.gameObject.CompareTag("Cactus") || other.gameObject.CompareTag("Oiseau"))
             {
                 Destroy(gameObject);
                 // Game Over load scene
