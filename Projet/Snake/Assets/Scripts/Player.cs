@@ -32,7 +32,11 @@ namespace Serpent
 
         private void Awake()
         {
+            Debug.Log("Player Awake");
+            PlayerDie = false;
             QualitySettings.vSyncCount = 0;
+            Speed = 0.005f;
+            FPS = 5;
             Application.targetFrameRate = FPS;
             StartCoroutine(AutoCollision());
             Direction = Directions["haut"];
@@ -46,8 +50,11 @@ namespace Serpent
             if(Application.targetFrameRate != FPS)
                 Application.targetFrameRate = FPS;
             if (PlayerDie)
+            {
+                Debug.Log("PlayerDie");
                 Destroy(this);
                 return;
+            }
             CheckPressed();
             move_corps();
         }

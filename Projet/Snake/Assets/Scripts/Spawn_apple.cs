@@ -15,8 +15,10 @@ namespace Verger
 
         public GameObject toSpawn;
 
-        void Start()
+        void Awake()
         {
+            Debug.Log("Spawn_apple");
+            apples = new List<Apple>();
             Coroutine spawn = StartCoroutine(Check_apple());
         }
 

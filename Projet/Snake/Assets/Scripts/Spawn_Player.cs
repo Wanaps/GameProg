@@ -5,7 +5,7 @@ public class Spawn_Player : MonoBehaviour
     public GameObject player;
     public GameObject corps;
 
-    void Start()
+    void Awake()
     {
         Instantiate(player);
     }
