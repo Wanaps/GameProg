@@ -40,8 +40,8 @@ namespace Verger
                     Instantiate(toSpawn, new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0),
                         Quaternion.identity).transform.GetComponent<Apple>());
             }
-            Player.fps += 2;
-            Debug.Log(Player.fps);
+            Player.FPS += 2;
+            Debug.Log(Player.FPS);
         }
     }
 }
