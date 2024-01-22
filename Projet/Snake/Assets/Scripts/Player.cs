@@ -46,6 +46,7 @@ namespace Serpent
             if(Application.targetFrameRate != FPS)
                 Application.targetFrameRate = FPS;
             if (PlayerDie)
+                Destroy(this);
                 return;
             CheckPressed();
             move_corps();
