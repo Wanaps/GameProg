@@ -8,6 +8,8 @@ namespace Dino
         public float speed = 5f;
         internal Rigidbody2D Rb;
         public bool isAlive = true;
+        public int MenuScene;
+        internal bool doubleJump = true;
         
         void Awake()
         {

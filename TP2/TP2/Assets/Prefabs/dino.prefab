@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  isAlive: 1
+  MenuScene: 0
 --- !u!114 &-9099362414719527463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  isAlive: 1
+  MenuScene: 0
 --- !u!114 &6231617120657001054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,3 +130,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  isAlive: 1
+  MenuScene: 0

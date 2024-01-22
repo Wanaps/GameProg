@@ -1,5 +1,7 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Dino
 {
@@ -11,7 +13,17 @@ namespace Dino
             {
                 Destroy(gameObject);
                 isAlive = false;
-                
+                SceneManager.LoadScene(MenuScene);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Oiseau"))
+            {
+                Destroy(gameObject);
+                isAlive = false;
+                SceneManager.LoadScene(MenuScene);
             }
         }
     }

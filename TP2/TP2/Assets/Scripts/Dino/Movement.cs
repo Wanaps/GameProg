@@ -9,8 +9,9 @@ namespace Dino
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && Rb.velocity.y == 0)
+            if (Input.GetKeyDown(KeyCode.Space) && (Rb.velocity.y == 0 || doubleJump) )
             {
+                doubleJump = !doubleJump;
                 Jump();
             }
             

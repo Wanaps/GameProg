@@ -9,8 +9,8 @@ namespace Coin
             if (other.CompareTag("Player"))
             {
                 Destroy(gameObject);
-                Spawner.Score++;
-            } else if (other.CompareTag("Cactus") || other.CompareTag("Oiseau"))
+                Spawner.Score += 5;
+            } else if (transform.position.x > 9 && (other.CompareTag("Cactus") || other.CompareTag("Oiseau")))
             {
                 Destroy(gameObject);
             }
