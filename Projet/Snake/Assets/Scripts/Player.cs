@@ -11,8 +11,8 @@ namespace Serpent
 {
     public class Player : MonoBehaviour
     {
-        public int score = 0;
-
+        public static int score = 0;
+        public static int highScore = 0;
         public static float Speed = 0.005f;
         public static int FPS = 5;
         private static readonly object _corpsLock = new object();
@@ -98,6 +98,8 @@ namespace Serpent
             Speed += 0.001f;
             Add_corps();
             score++;
+            if (score > highScore)
+                highScore = score;
         }
         
         public void Add_corps()
@@ -138,12 +140,12 @@ namespace Serpent
                         AllCorps.Remove(co);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Die(list);
                 }
             }
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
         }
     }
 }
