@@ -139,7 +139,7 @@ namespace Serpent
                     Die(list);
                 }
             }
-            // SceneManager.LoadScene("Lose");
+            SceneManager.LoadScene(0);
         }
     }
 }
