@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BackButton : MonoBehaviour
 {
-    public static int MainScene = 1;
+    public static int MainScene = 0;
 
     public void BackToMain()
     {
