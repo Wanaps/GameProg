@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ae9571ad5ba45458e7d502bf5556bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelScene: 0
+  LevelScene: 2
 --- !u!114 &159834094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ae9571ad5ba45458e7d502bf5556bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelScene: 0
+  LevelScene: 2
 --- !u!114 &599762659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ae9571ad5ba45458e7d502bf5556bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelScene: 0
+  LevelScene: 2
 --- !u!114 &1484318243
 MonoBehaviour:
   m_ObjectHideFlags: 0

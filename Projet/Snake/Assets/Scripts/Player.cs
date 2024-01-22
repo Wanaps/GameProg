@@ -30,19 +30,15 @@ namespace Serpent
         public GameObject corps;
         public static List<Corps> AllCorps = new List<Corps>();
 
-        void Start()
+        private void Awake()
         {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = FPS;
             StartCoroutine(AutoCollision());
             Direction = Directions["haut"];
             Corps tete = Instantiate(corps, new Vector3(0, 0, 0), Quaternion.identity).transform.GetComponent<Corps>();
             tete.tag = "Player";
             AllCorps.Add(tete);
-        }
-
-        private void Awake()
-        {
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = FPS;
         }
 
         void Update()
