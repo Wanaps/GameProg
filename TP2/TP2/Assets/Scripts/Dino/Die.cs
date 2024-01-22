@@ -10,7 +10,7 @@ namespace Dino
             if (other.gameObject.CompareTag("Cactus") || other.gameObject.CompareTag("Oiseau"))
             {
                 Destroy(gameObject);
-                // Game Over load scene
+                isAlive = false;
                 
             }
         }

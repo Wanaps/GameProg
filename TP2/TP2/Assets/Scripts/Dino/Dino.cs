@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Data.Common;
+using UnityEngine;
 
 namespace Dino
 {
@@ -6,6 +7,7 @@ namespace Dino
     {
         public float speed = 5f;
         internal Rigidbody2D Rb;
+        public bool isAlive = true;
         
         void Awake()
         {
