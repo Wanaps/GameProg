@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Serpent;
 using UnityEngine;
-using Verger;
 using Bombes;
 using Random = UnityEngine.Random;
 
@@ -20,7 +19,7 @@ namespace Spawners
         {
             Debug.Log("SpawnBombes");
             Bombes = new List<Bombe>();
-            Coroutine spawn = StartCoroutine(CheckBomes());
+            StartCoroutine(CheckBomes());
         }
 
         IEnumerator CheckBomes()

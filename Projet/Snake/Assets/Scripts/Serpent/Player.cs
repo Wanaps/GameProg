@@ -1,22 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 namespace Serpent
 {
     public class Player : MonoBehaviour
     {
-        public static int Score = 0;
-        public static int HighScore = 0;
+        public static int Score ;
+        public static int HighScore;
         public static float Speed = 0.005f;
         public static int FPS = 5;
         private static readonly object CorpsLock = new object();
-        internal static bool PlayerDie = false;
+        internal static bool PlayerDie;
 
         internal Dictionary<string, Vector3> Directions = new Dictionary<string, Vector3>
         {

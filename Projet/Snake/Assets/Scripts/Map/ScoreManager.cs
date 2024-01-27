@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Serpent;
 using UnityEngine;
 using UnityEngine.Serialization;

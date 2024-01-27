@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using Serpent;
 using Spawners;
 using UnityEngine;
-using Walls;
 
 namespace Map
 {
@@ -31,6 +28,18 @@ namespace Map
                     if (wall.gameObject == other.gameObject)
                     {
                         wall.Direction *= -1;
+                        return;
+                    }
+                }
+            }
+
+            if (other.gameObject.CompareTag("GoldApple"))
+            {
+                foreach (var ga in SpawnGoldApples.GoldApples)
+                {
+                    if (ga.gameObject == other.gameObject)
+                    {
+                        ga.Direction *= -1;
                         return;
                     }
                 }

@@ -1,26 +1,24 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GoldApple;
 using Serpent;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Spawners
 {
-
-    public class SpawnApple : MonoBehaviour
+    public class SpawnGoldApples : MonoBehaviour
     {
-
-        [FormerlySerializedAs("max_apples")] public int maxApples = 10;
-        public static List<Verger.Apple> Apples = new List<Verger.Apple>();
+        public int maxApples = 1;
+        public static List<GoldApple.GoldApple> GoldApples = new List<GoldApple.GoldApple>();
 
         public GameObject toSpawn;
 
         void Awake()
         {
-            Debug.Log("Spawn_apple");
-            Apples = new List<Verger.Apple>();
+            Debug.Log("Spawn gold apple");
+            GoldApples = new List<GoldApple.GoldApple>();
             StartCoroutine(Check_apple());
         }
 
@@ -29,9 +27,28 @@ namespace Spawners
             while (true)
             {
                 yield return new WaitForSeconds(.1f);
-                if (Apples.Count <= 0)
+                if (Player.Score % 20 == 0 && Player.Score != 0 && GoldApples.Count <= maxApples)
                 {
                     Spawn();
+                }
+            }
+        }
+        private void Update()
+        {
+            foreach (var ga in GoldApples)
+            {
+                if (ga.Direction == 1)
+                {
+                    Movement.Move(Vector2.up * (Time.deltaTime * 5), ga.Rd);
+                } else if (ga.Direction == -1) {
+                    Movement.Move(Vector2.down * (Time.deltaTime * 5), ga.Rd);
+                }
+                else if (ga.Direction == 2)
+                {
+                    Movement.Move(Vector2.right * (Time.deltaTime * 5), ga.Rd);
+                } else
+                {
+                    Movement.Move(Vector2.left * (Time.deltaTime * 5), ga.Rd);
                 }
             }
         }
@@ -44,9 +61,10 @@ namespace Spawners
                 var y = Random.Range(-4, 4);
                 if (!IsBombe(x, y))
                 {
-                    Apples.Add(
+                    GoldApples.Add(
                         Instantiate(toSpawn, new Vector3(x, y, 0),
-                            Quaternion.identity).transform.GetComponent<Verger.Apple>());
+                            Quaternion.identity).transform.GetComponent<GoldApple.GoldApple>());
+                    GoldApples[^1].Direction = Random.Range(1, 2);
                 }
                 else
                 {

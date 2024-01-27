@@ -8,6 +8,7 @@ TagManager:
   - Corps
   - Undefined
   - Wall
+  - GoldApple
   layers:
   - Default
   - TransparentFX
