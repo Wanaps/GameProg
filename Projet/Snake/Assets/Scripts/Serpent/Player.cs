@@ -11,11 +11,11 @@ namespace Serpent
 {
     public class Player : MonoBehaviour
     {
-        public static int score = 0;
-        public static int highScore = 0;
+        public static int Score = 0;
+        public static int HighScore = 0;
         public static float Speed = 0.005f;
         public static int FPS = 5;
-        private static readonly object _corpsLock = new object();
+        private static readonly object CorpsLock = new object();
         internal static bool PlayerDie = false;
 
         internal Dictionary<string, Vector3> Directions = new Dictionary<string, Vector3>
@@ -26,7 +26,7 @@ namespace Serpent
             { "bas", new Vector3(0, -0.45f + Speed, 0) }
         };
 
-        internal Vector3 Direction;
+        public static Vector3 Direction;
         public GameObject corps;
         public static List<Corps> AllCorps = new List<Corps>();
 
@@ -97,15 +97,15 @@ namespace Serpent
         {
             Speed += 0.001f;
             Add_corps();
-            score++;
-            if (score > highScore)
-                highScore = score;
+            Score++;
+            if (Score > HighScore)
+                HighScore = Score;
         }
         
         public void Add_corps()
         {
-            Vector3 pos = AllCorps[AllCorps.Count - 1].transform.position - Direction;
-            AllCorps.Add(Instantiate(corps, pos, Quaternion.identity).transform.GetComponent<Corps>());
+            Vector3 pos = AllCorps[0].transform.position - Direction;
+            AllCorps.Insert(0, Instantiate(corps, pos, Quaternion.identity).transform.GetComponent<Corps>());
         }
         
         public IEnumerator AutoCollision()
@@ -120,6 +120,7 @@ namespace Serpent
                     {
                         if (tete.transform.position == AllCorps[i].transform.position)
                         {
+                            Debug.Log("Collision");
                             Die(AllCorps);
                         }
                     }
@@ -130,7 +131,7 @@ namespace Serpent
         public static void Die(List<Corps> list)
         {
             PlayerDie = true; 
-            lock (_corpsLock)
+            lock (CorpsLock)
             {
                 try
                 {
@@ -145,7 +146,7 @@ namespace Serpent
                     Die(list);
                 }
             }
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(5);
         }
     }
 }

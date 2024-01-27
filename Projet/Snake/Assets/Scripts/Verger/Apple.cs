@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Serpent;
+using Spawners;
 using UnityEngine;
 
 namespace Verger
@@ -10,21 +11,21 @@ namespace Verger
     public class Apple : MonoBehaviour
     {
 
-        Rigidbody2D rd = new Rigidbody2D();
-        PolygonCollider2D pc = new PolygonCollider2D();
+        Rigidbody2D _rd = new Rigidbody2D();
+        PolygonCollider2D _pc = new PolygonCollider2D();
         public Player player;
 
         void Start()
         {
-            rd = gameObject.GetComponent<Rigidbody2D>() == null
+            _rd = gameObject.GetComponent<Rigidbody2D>() == null
                 ? gameObject.AddComponent<Rigidbody2D>()
                 : gameObject.GetComponent<Rigidbody2D>();
-            rd.gravityScale = 0;
-            rd.constraints = RigidbodyConstraints2D.FreezeRotation;
-            pc = gameObject.GetComponent<PolygonCollider2D>() == null
+            _rd.gravityScale = 0;
+            _rd.constraints = RigidbodyConstraints2D.FreezeRotation;
+            _pc = gameObject.GetComponent<PolygonCollider2D>() == null
                 ? gameObject.AddComponent<PolygonCollider2D>()
                 : gameObject.GetComponent<PolygonCollider2D>();
-            pc.isTrigger = true;
+            _pc.isTrigger = true;
 
         }
 
@@ -34,7 +35,7 @@ namespace Verger
             {
                 Destroy(gameObject);
                 player.Eat();
-                Spawn_apple.apples.Remove(this);
+                SpawnApple.Apples.Remove(this);
             }
         }
     }
