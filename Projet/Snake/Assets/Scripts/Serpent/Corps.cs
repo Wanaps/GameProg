@@ -6,7 +6,7 @@ namespace Serpent
     {
         private Rigidbody2D _rb;
         private Player _player;
-        
+
         public Corps(float x, float y)
         {
             transform.position = new Vector3(x, y, 0);
@@ -28,12 +28,13 @@ namespace Serpent
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Player") && Player.AllCorps.Count > 2)
+            if (other.gameObject.CompareTag("Player") && !gameObject.CompareTag("Player") && Player.AllCorps.Count > 4)
             {
-                if (other.gameObject.GetComponent<Corps>() == Player.AllCorps[^1].gameObject.GetComponent<Corps>() && 
+                if (other.gameObject.GetComponent<Corps>() == Player.AllCorps[^1].gameObject.GetComponent<Corps>() &&
                     this != Player.AllCorps[^2].gameObject.GetComponent<Corps>() &&
                     this != Player.AllCorps[0].gameObject.GetComponent<Corps>())
                 {
+                    Debug.Log("Player Die by collision");
                     Player.Die(Player.AllCorps);
                 }
             }

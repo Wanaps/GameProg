@@ -17,10 +17,10 @@ namespace Serpent
 
         internal Dictionary<string, Vector3> Directions = new Dictionary<string, Vector3>
         {
-            { "droite", new Vector3(0.45f + Speed, 0, 0) },
-            { "gauche", new Vector3(-0.45f + Speed, 0, 0) },
-            { "haut", new Vector3(0, 0.45f + Speed, 0) },
-            { "bas", new Vector3(0, -0.45f + Speed, 0) }
+            { "droite", new Vector3(0.5f + Speed, 0, 0) },
+            { "gauche", new Vector3(-0.5f + Speed, 0, 0) },
+            { "haut", new Vector3(0, 0.5f + Speed, 0) },
+            { "bas", new Vector3(0, -0.5f + Speed, 0) }
         };
 
         public static Vector3 Direction;
@@ -72,21 +72,42 @@ namespace Serpent
 
         private void CheckPressed()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && Direction != Directions["bas"])
+            if ((Score % 50 >= 0 && Score % 50 < 10) && Score >= 50)
             {
-                Direction = Directions["haut"];
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) && Direction != Directions["haut"])
+                if (Input.GetKeyDown(KeyCode.UpArrow) && Direction != Directions["haut"])
+                {
+                    Direction = Directions["bas"];
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow) && Direction != Directions["bas"])
+                {
+                    Direction = Directions["haut"];
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) && Direction != Directions["gauche"])
+                {
+                    Direction = Directions["droite"];
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow) && Direction != Directions["droite"])
+                {
+                    Direction = Directions["gauche"];
+                }
+            } else
             {
-                Direction = Directions["bas"];
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) && Direction != Directions["droite"])
-            {
-                Direction = Directions["gauche"];
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow) && Direction != Directions["gauche"])
-            {
-                Direction = Directions["droite"];
+                if (Input.GetKeyDown(KeyCode.UpArrow) && Direction != Directions["bas"])
+                {
+                    Direction = Directions["haut"];
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow) && Direction != Directions["haut"])
+                {
+                    Direction = Directions["bas"];
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) && Direction != Directions["droite"])
+                {
+                    Direction = Directions["gauche"];
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow) && Direction != Directions["gauche"])
+                {
+                    Direction = Directions["droite"];
+                }
             }
         }
 
@@ -127,7 +148,7 @@ namespace Serpent
         
         public static void Die(List<Corps> list)
         {
-            PlayerDie = true; 
+            PlayerDie = true;
             lock (CorpsLock)
             {
                 try

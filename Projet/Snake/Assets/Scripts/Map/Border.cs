@@ -10,6 +10,7 @@ namespace Map
         {
             if (other.gameObject.CompareTag("Player"))
             {
+                Debug.Log("Player is dead by border");
                 Player.Die(Player.AllCorps);
             }
             if (other.gameObject.CompareTag("Wall"))
